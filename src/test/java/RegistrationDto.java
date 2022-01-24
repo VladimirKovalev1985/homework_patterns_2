@@ -1,12 +1,13 @@
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Value;
 
-public class RegistrationDto {
-    @Value
+
+    @Data
     @AllArgsConstructor
-    public static class RegistrationDto {
-        String login;
-        String password;
-        String status;
+    public class RegistrationDto {
+        private final String login;
+        private final String password;
+        private final String status;
     }
-}
+

@@ -1,9 +1,12 @@
 import com.github.javafaker.Faker;
-import com.sun.tools.xjc.reader.xmlschema.bindinfo.BIConversion;
+
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.filter.log.LogDetail;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
+import lombok.AllArgsConstructor;
+import lombok.Value;
+import lombok.val;
 
 import java.util.Locale;
 
@@ -19,7 +22,7 @@ public class DataGenerator {
             .build();
     private static final Faker faker = new Faker(new Locale("en"));
 
-    private DataGenerator(){
+    private DataGenerator() {
 
     }
 
@@ -33,27 +36,38 @@ public class DataGenerator {
                 .statusCode(200); // код 200 OK
     }
 
-    public static String getRandomLogin(){
+    public static String getRandomLogin() {
+
         return faker.name().username();
     }
 
-    public static String getRandomPassword(){
+    public static String getRandomPassword() {
+
         return faker.internet().password();
     }
 
-    public static class Registration{
-        private Registration(){
+    public static class Registration {
+        private Registration() {
 
         }
 
-    public static RegistrationDto getUser(String status){
-            RegistrationDto user = new RegistrationDto(getRandomLogin(), getRandomPassword(), "active");
+        public static RegistrationDto getUser(String status) {
+            RegistrationDto user = new RegistrationDto(getRandomLogin(), getRandomPassword(), status);
             return user;
+        }
+
+        public static RegistrationDto getRegisteredUser(String status) {
+            RegistrationDto registeredUser = getUser(status);
+            setRequest(registeredUser);
+            return registeredUser;
+
+
+        }
     }
-    }
-
-
-
-
-
 }
+
+
+
+
+
+
