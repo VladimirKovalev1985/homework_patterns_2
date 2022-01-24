@@ -1,0 +1,1 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/f7b9ir9fov1jcga0?svg=true)](https://ci.appveyor.com/project/VladimirKovalev1985/homework-patterns-2)
